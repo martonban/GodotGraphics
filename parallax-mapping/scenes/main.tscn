@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2twkry0ntlfh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4d1ti"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0267158)
+mesh = SubResource("QuadMesh_4d1ti")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.40864)
