@@ -1,14 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2twkry0ntlfh"]
+[gd_scene load_steps=7 format=3 uid="uid://b2twkry0ntlfh"]
+
+[ext_resource type="Shader" path="res://shaders/parallax.gdshader" id="1_fo0dg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ma8l"]
+
+[sub_resource type="Sky" id="Sky_rpb4d"]
+sky_material = SubResource("ProceduralSkyMaterial_2ma8l")
+
+[sub_resource type="Environment" id="Environment_4yil5"]
+background_mode = 2
+sky = SubResource("Sky_rpb4d")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_4d1ti"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra4yl"]
+render_priority = 0
+shader = ExtResource("1_fo0dg")
 
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4yil5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0267158)
+[node name="TestModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.844571, 0.535444, 0, -0.535444, 0.844571, 0, 0, 0.0267158)
 mesh = SubResource("QuadMesh_4d1ti")
+surface_material_override/0 = SubResource("ShaderMaterial_ra4yl")
+
+[node name="TestModel2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.844571, 0.535444, 0, -0.535444, 0.844571, 0, 0, 0.0267158)
+mesh = SubResource("QuadMesh_4d1ti")
+surface_material_override/0 = SubResource("ShaderMaterial_ra4yl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.40864)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.790903, 0.611941, 0, -0.611941, 0.790903, 0, 2.96063, 2.73092)
